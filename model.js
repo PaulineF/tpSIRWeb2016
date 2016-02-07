@@ -6,7 +6,7 @@
      this.epaisseur=epaisseur;
  }
 
-function Line(couleur, epaisseur, startX, startY, endX, endY){
+function Line( startX, startY, endX, endY, epaisseur, couleur){
     Form.call(this, couleur, epaisseur);
     this.startX = startX;
     this.startY = startY;
@@ -15,7 +15,7 @@ function Line(couleur, epaisseur, startX, startY, endX, endY){
 
 }
 
-function Rectangle(couleur, epaisseur, startX, startY, longueur, largeur){
+function Rectangle(startX, startY, longueur, largeur, epaisseur,  couleur){
     Form.call(this, couleur, epaisseur);
     this.startX = startX;
     this.startY = startY;
