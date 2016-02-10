@@ -20,7 +20,7 @@ ligne.paint(ctx);
 ////
 
 // Code final à utiliser pour manipuler Pencil.
-//var drawing = new Drawing();
-//var pencil = new Pencil(ctx, drawing, canvas);
+var drawing = new Drawing();
+var pencil = new Pencil(ctx, drawing, canvas);
 //drawing.paint(ctx, canvas);
 

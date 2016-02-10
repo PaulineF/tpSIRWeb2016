@@ -17,6 +17,7 @@ function DnD(canvas, interactor) {
             this.initialX = pos.x;
             this.initialY = pos.y;
             console.log("initialX : " + this.initialX +" // initialY : " + this.initialY);
+            pencil.onInteractionStart(this);
         }
     }.bind(this);
 
@@ -29,6 +30,7 @@ function DnD(canvas, interactor) {
 
             //console.log("initialX : " + this.initialX +" // initialY : " + this.initialY);
             console.log("finalX : " + this.finalX +" // finalY : " + this.finalY);
+            pencil.onInteractionUpdate(this);
         }
     }.bind(this);
 
@@ -41,6 +43,7 @@ function DnD(canvas, interactor) {
             this.finalY = pos.y;
 
             console.log("finalX : " + this.finalX +" // finalY : " + this.finalY);
+            pencil.onInteractionEnd(this);
         }
     }.bind(this);
 

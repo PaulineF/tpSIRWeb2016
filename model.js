@@ -24,5 +24,5 @@ function Rectangle(startX, startY, longueur, largeur, epaisseur,  couleur){
 }
 
 function Drawing(){
-    this.forms = new Array();
+    this.forms =[];
 }
