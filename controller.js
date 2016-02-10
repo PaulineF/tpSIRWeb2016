@@ -15,13 +15,12 @@ function Pencil(ctx, drawing, canvas) {
 
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 	this.onInteractionStart = function(DnD){
-		var color = $('#colour').val();
-		var width = $('#spinnerWidth').val();
+		currColour = $('#colour').val();
+		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
-			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
-			console.log("RECT")
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
 		}else{
-			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
 		}
 
 
@@ -29,27 +28,25 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.onInteractionUpdate = function(DnD){
-		var color = $('#colour').val();
-
-		var width = $('#spinnerWidth').val();
+		currColour = $('#colour').val();
+		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
-			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
 		}else{
-			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
 		}
 
 	}.bind(this);
 
 	this.onInteractionEnd = function(DnD){
-		var color = $('#colour').val();
-
-		var width = $('#spinnerWidth').val();
+		currColour = $('#colour').val();
+		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
-			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
 
 			rec.paint(ctx);
 		}else{
-			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
 
 			line.paint(ctx);
 		}
