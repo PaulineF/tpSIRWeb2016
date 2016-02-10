@@ -11,24 +11,48 @@ function Pencil(ctx, drawing, canvas) {
 
 	new DnD(canvas, this);
 
+
+
 	// Implémentez ici les 3 fonctions onInteractionStart, onInteractionUpdate et onInteractionEnd
 	this.onInteractionStart = function(DnD){
-		var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, 5, '#ff0000');
+		var color = $('#colour').val();
+		var width = $('#spinnerWidth').val();
+		if ($('#butRect')[0].checked){
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
+			console.log("RECT")
+		}else{
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+		}
+
 
 
 	}.bind(this);
 
 	this.onInteractionUpdate = function(DnD){
-		var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX-DnD.initialX, DnD.finalY-DnD.initialY, 5, '#ff0000');
+		var color = $('#colour').val();
 
+		var width = $('#spinnerWidth').val();
+		if ($('#butRect')[0].checked){
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
+		}else{
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+		}
 
 	}.bind(this);
 
 	this.onInteractionEnd = function(DnD){
-		var longueur = DnD.finalX - DnD.initialX;
-		var largeur = DnD.finalY - DnD.initialY;
-		var rec = new Rectangle(DnD.initialX, DnD.initialY, longueur, largeur, 5, '#ff0000');
-		rec.paint(ctx);
+		var color = $('#colour').val();
+
+		var width = $('#spinnerWidth').val();
+		if ($('#butRect')[0].checked){
+			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, width, color);
+
+			rec.paint(ctx);
+		}else{
+			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, width, color);
+
+			line.paint(ctx);
+		}
 	}.bind(this);
 };
 
