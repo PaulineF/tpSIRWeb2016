@@ -1,4 +1,4 @@
-
+//hi
 // Implémenter ici les fonctions paint à ajouter dans chacune des classes du modèle.
 Rectangle.prototype.paint = function(ctx) {
 //TODO Manager color
