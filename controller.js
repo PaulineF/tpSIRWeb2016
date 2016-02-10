@@ -19,16 +19,16 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.onInteractionUpdate = function(DnD){
-		var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, 5, '#ff0000');
+		var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX-DnD.initialX, DnD.finalY-DnD.initialY, 5, '#ff0000');
 
 
 	}.bind(this);
 
 	this.onInteractionEnd = function(DnD){
-		var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, 5, '#ff0000');
-		console.log(DnD.finalX- DnD.initialX)
+		var longueur = DnD.finalX - DnD.initialX;
+		var largeur = DnD.finalY - DnD.initialY;
+		var rec = new Rectangle(DnD.initialX, DnD.initialY, longueur, largeur, 5, '#ff0000');
 		rec.paint(ctx);
-
 	}.bind(this);
 };
 

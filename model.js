@@ -19,8 +19,8 @@ function Rectangle(startX, startY, longueur, largeur, epaisseur,  couleur){
     Form.call(this, couleur, epaisseur);
     this.startX = startX;
     this.startY = startY;
-    this.longueur = longueur;
-    this.largeur = largeur;
+    this.endX = longueur;
+    this.endY = largeur;
 }
 
 function Drawing(){
