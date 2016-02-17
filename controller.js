@@ -43,11 +43,11 @@ function Pencil(ctx, drawing, canvas) {
 		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
 			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
-
+			drawing.updateShapeList(rec);
 			rec.paint(ctx);
 		}else{
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
-
+			drawing.updateShapeList(line);
 			line.paint(ctx);
 		}
 	}.bind(this);
