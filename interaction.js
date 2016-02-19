@@ -16,6 +16,7 @@ function DnD(canvas, interactor) {
             var pos = getMousePosition(canvas, evt);
             this.initialX = pos.x;
             this.initialY = pos.y;
+			alert(this.initialX);
             console.log("initialX : " + this.initialX +" // initialY : " + this.initialY);
             pencil.onInteractionStart(this);
         }

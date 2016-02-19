@@ -12,7 +12,7 @@ canvas.height=600
 /////
 
 // Code temporaire pour tester l'affiche de la vue
-//var rec = new Rectangle(10, 20, 50, 100, 5, '#ff0000');
+//var rec = new Rectangle(155.5, 130, 176, 148, 5, '#ff0000');
 //rec.paint(ctx);
 //var ligne = new Line(80, 30, 200, 60, 5, '#ff0000');
 //ligne.paint(ctx);

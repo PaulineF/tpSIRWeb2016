@@ -31,15 +31,20 @@ function Pencil(ctx, drawing, canvas) {
 	}.bind(this);
 
 	this.onInteractionUpdate = function(DnD){
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		drawing.paint(ctx);
 		currColour = $('#colour').val();
 		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
 			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
+			rec.paint(ctx);
 		}else if($('#butLine')[0].checked){
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
+			line.paint(ctx);
 		}else {
 			var radius = Math.sqrt(Math.pow(DnD.finalX - DnD.initialX,2)+Math.pow(DnD.finalY - DnD.initialY,2));
 			var cercle = new Cercle(DnD.initialX, DnD.initialY, radius,currLineWidth, currColour);
+			cercle.paint (ctx);
 		}
 
 	}.bind(this);
