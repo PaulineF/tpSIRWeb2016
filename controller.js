@@ -1,5 +1,5 @@
 
-var editingMode = { rect: 0, line: 1 };
+var editingMode = { rect: 0, line: 1, cercle: 2 };
 
 function Pencil(ctx, drawing, canvas) {
 	this.currEditingMode = editingMode.line;
@@ -19,8 +19,11 @@ function Pencil(ctx, drawing, canvas) {
 		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
 			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
-		}else{
+		}else if($('#butLine')[0].checked){
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
+		}else {
+			var radius = Math.sqrt(Math.pow(DnD.finalX - DnD.initialX,2)+Math.pow(DnD.finalY - DnD.initialY,2));
+			var cercle = new Cercle(DnD.initialX, DnD.initialY, radius,currLineWidth, currColour);
 		}
 
 
@@ -32,8 +35,11 @@ function Pencil(ctx, drawing, canvas) {
 		currLineWidth = $('#spinnerWidth').val();
 		if ($('#butRect')[0].checked){
 			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
-		}else{
+		}else if($('#butLine')[0].checked){
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
+		}else {
+			var radius = Math.sqrt(Math.pow(DnD.finalX - DnD.initialX,2)+Math.pow(DnD.finalY - DnD.initialY,2));
+			var cercle = new Cercle(DnD.initialX, DnD.initialY, radius,currLineWidth, currColour);
 		}
 
 	}.bind(this);
@@ -47,13 +53,20 @@ function Pencil(ctx, drawing, canvas) {
 			rec.paint(ctx);
 			console.log(rec);
 			drawing.addShape(rec);
-		}else{
+		}else if($('#butLine')[0].checked){
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
 			drawing.updateShapeList(line);
 			line.paint(ctx);
-			 console.log(line);
-			 drawing.addShape(line);
+			console.log(line);
+			drawing.addShape(line);
 			 
+		}else{
+			var radius = Math.sqrt(Math.pow(DnD.finalX - DnD.initialX,2)+Math.pow(DnD.finalY - DnD.initialY,2));
+			var cercle = new Cercle(DnD.initialX, DnD.initialY, radius,currLineWidth, currColour);
+			drawing.updateShapeList(cercle);
+			cercle.paint (ctx);
+			console.log(cercle);
+			drawing.addShape(cercle);
 		}
 		
 		 console.log(drawing.forms);

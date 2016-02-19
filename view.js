@@ -22,6 +22,14 @@ Line.prototype.paint = function(ctx) {
 
 };
 
+Cercle.prototype.paint = function(ctx) {
+	ctx.beginPath();
+	ctx.arc(this.centerX, this.centerY, this.radius,0,2*Math.PI,true);
+	ctx.lineWidth = this.epaisseur;
+    ctx.strokeStyle = this.couleur;
+    ctx.stroke();
+}
+
 
 Drawing.prototype.paint = function(ctx) {
  
@@ -32,8 +40,6 @@ Drawing.prototype.paint = function(ctx) {
         eltDuTableau.paint(ctx);
     });
 };
-
-
 
 
 Drawing.prototype.updateShapeList = function(shape){
@@ -64,6 +70,8 @@ Drawing.prototype.updateShapeList = function(shape){
 	} else if(shape instanceof Line){
 		
 		li.appendChild(document.createTextNode('Line' +'('+ sx+','+sy+','+ex+','+ey+')'));
+	} else {
+		li.appendChild(document.createTextNode('Cercle' +'('+ shape.centerX+','+shape.centerY+','+shape.radius+')'));
 	}
 	
 	li.setAttribute('id', 'li'+id);
@@ -77,7 +85,7 @@ Drawing.prototype.deleteShape = function(id){
 	var index = $(li).index();
 	li.remove();
 	this.removeShape(index);
-	//ctx.clearRect(sx,sy,ex,ey);
+	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     drawing.paint(ctx);

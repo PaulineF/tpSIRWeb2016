@@ -23,6 +23,14 @@ function Rectangle(startX, startY, longueur, largeur, epaisseur,  couleur){
     this.endY = largeur;
 }
 
+function Cercle (centerX, centerY, radius, epaisseur, couleur ){
+	Form.call(this, couleur, epaisseur);
+	this.centerX = centerX;
+	this.centerY = centerY;
+	this.radius = radius;
+	
+}
+
 function Drawing(){
     this.forms =[];
 	this.addShape = function(shape){
