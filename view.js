@@ -79,7 +79,7 @@ Drawing.prototype.deleteShape = function(id){
 	this.removeShape(index);
 	//ctx.clearRect(sx,sy,ex,ey);
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //On recree la liste de dessins du canvas
-    drawing.paint(ctx, canvas);
+    
+    drawing.paint(ctx);
    
 };
