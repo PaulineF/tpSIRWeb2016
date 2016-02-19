@@ -45,13 +45,18 @@ function Pencil(ctx, drawing, canvas) {
 			var rec = new Rectangle(DnD.initialX, DnD.initialY, DnD.finalX- DnD.initialX, DnD.finalY- DnD.initialY, currLineWidth, currColour);
 			drawing.updateShapeList(rec);
 			rec.paint(ctx);
-			 console.log(rec);
+			console.log(rec);
+			drawing.addShape(rec);
 		}else{
 			var line = new Line(DnD.initialX, DnD.initialY, DnD.finalX, DnD.finalY, currLineWidth, currColour);
 			drawing.updateShapeList(line);
 			line.paint(ctx);
 			 console.log(line);
+			 drawing.addShape(line);
+			 
 		}
+		
+		 console.log(drawing.forms);
 	}.bind(this);
 };
 

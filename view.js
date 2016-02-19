@@ -1,4 +1,5 @@
 //hi
+
 // Implémenter ici les fonctions paint à ajouter dans chacune des classes du modèle.
 Rectangle.prototype.paint = function(ctx) {
 //TODO Manager color
@@ -23,7 +24,7 @@ Line.prototype.paint = function(ctx) {
 
 
 Drawing.prototype.paint = function(ctx) {
-   
+ 
     ctx.fillStyle = '#F0F0F0'; // set canvas' background color
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     this.forms.forEach(function(eltDuTableau) {
@@ -31,6 +32,9 @@ Drawing.prototype.paint = function(ctx) {
         eltDuTableau.paint(ctx);
     });
 };
+
+
+
 
 Drawing.prototype.updateShapeList = function(shape){
 	
@@ -46,12 +50,13 @@ Drawing.prototype.updateShapeList = function(shape){
 	var ey = shape.endY;
 	
 	
+	
 	bouton.setAttribute('id', id);
 	bouton.setAttribute('class','btn btn-default')
 	span.setAttribute('class','glyphicon glyphicon-remove-sign');
 	bouton.appendChild(span);
 	li.appendChild(bouton);
-	bouton.setAttribute('onClick', 'drawing.deleteShape('+id+','+sx+','+sy+','+ex+','+ey+')');
+	bouton.setAttribute('onClick', 'drawing.deleteShape('+id+')');
 	
 	if (shape instanceof Rectangle){
 		li.appendChild(document.createTextNode('Rectangle' +'('+ sx+','+sy+','+ex+','+ey+')'));
@@ -66,8 +71,15 @@ Drawing.prototype.updateShapeList = function(shape){
 	list.appendChild(li);
 };
 
-Drawing.prototype.deleteShape = function(id,sx,sy,ex,ey){
+Drawing.prototype.deleteShape = function(id){
+	
 	var li = document.getElementById('li'+id);
+	var index = $(li).index();
 	li.remove();
-	ctx.clearRect(sx,sy,ex,ey);
+	this.removeShape(index);
+	//ctx.clearRect(sx,sy,ex,ey);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //On recree la liste de dessins du canvas
+    drawing.paint(ctx, canvas);
+   
 };

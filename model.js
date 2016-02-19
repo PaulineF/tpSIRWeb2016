@@ -25,4 +25,10 @@ function Rectangle(startX, startY, longueur, largeur, epaisseur,  couleur){
 
 function Drawing(){
     this.forms =[];
+	this.addShape = function(shape){
+		this.forms.push(shape);
+	};
+	this.removeShape = function(id){
+		this.forms.splice(id,1);
+	};
 }
